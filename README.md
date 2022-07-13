@@ -1,6 +1,6 @@
 # WebRTC Camera
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
 [![Donate](https://img.shields.io/badge/donate-BuyMeCoffee-yellow.svg)](https://www.buymeacoffee.com/AlexxIT)
 [![Donate](https://img.shields.io/badge/donate-YooMoney-8C3FFD.svg)](https://yoomoney.ru/to/41001428278477)
 
@@ -47,13 +47,13 @@ Opera PC                    | doesn't supported                  | video: H264<b
 
 In case of any problems, check:
 
-1. Check that you have installed the integration on the "Configuration > Integrations" page
-2. Check that you don't have any erros in "Configuration > Logs" page
+1. Check that you have installed the integration on the "Settings > Devices & Services" page
+2. Check that you don't have any erros in "Settings > System > Logs" page
 3. Check if default video with Bunny works:
 
 ```yaml
 type: 'custom:webrtc-camera'
-url: 'rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov'
+url: 'rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4'
 ```
 
 If you are using an iPhone - also read the **Why is WebRTC not working?**, because your phone does not support MSE technology.
@@ -105,7 +105,7 @@ For more tech info read about [STUN](https://en.wikipedia.org/wiki/STUN) and [UD
 
 [![WebRTC Camera real time streaming component for Home Assistant](https://img.youtube.com/vi/2otE2dc6OAA/mqdefault.jpg)](https://www.youtube.com/watch?v=2otE2dc6OAA)
 
-> Configuration > Integrations > Add Integration > **WebRTC**
+> Settings > Devices & Services > Add Integration > **WebRTC**
 
 If the integration is not in the list, you need to clear the browser cache.
 
@@ -171,17 +171,25 @@ ActiveCam | AC-D2121IR3 |
 ActiveCam | AC-D7121IR1W | support sound
 Android | [IP Webcam Pro](https://play.google.com/store/apps/details?id=com.pas.webcam.pro) | support sound, `rtsp://192.168.1.123:8080/h264_ulaw.sdp`
 Dahua | DH-IPC-HDPW1431FP-AS-0280B, VTO2211G-P | support sound
+Dahua | VTO2202F-P-S2 | [read more](https://github.com/blakeblackshear/frigate/discussions/2572)
 EZVIZ | C3S | `rtsp://admin:pass@192.168.1.123:554/h264/ch01/main/av_stream` and `/h264/ch01/sub/av_stream`
+EZVIZ | C3W, C3WN, C6CN, C6T | `rtsp://admin:pass@192.168.1.123:554/h264_stream`
 Foscam | C1 | `rtsp://user:pass@192.168.1.123:554/videoMain`
-GW Security | GW5088IP | 'rtsp://192.168.0.209:554/mpeg4cif?username=admin&password=123456'
-GW Security | GW5078IP | 'rtsp://192.168.0.201:554/stream0?username=admin&password=123456'
-GW Security | GW5071IP | Not working yet, something similar to 'rtsp://admin:123456@192.168.0.207:554/live/main' or 'rtsp://192.168.0.207:554/live/main?username=admin&password=123456'
+Foscam | C2M, R2M | `rtsp://user:pass@192.168.1.123:88/videoMain`
+GW Security | GW5088IP | `rtsp://192.168.1.123:554/mpeg4cif?username=admin&password=123456`
+GW Security | GW5078IP | `rtsp://192.168.1.123:554/stream0?username=admin&password=123456`
+GW Security | GW5071IP | Not working yet, something similar to `rtsp://admin:123456@192.168.0.207:554/live/main` or `rtsp://192.168.0.207:554/live/main?username=admin&password=123456`
 Hikvision | DS-2CD2T47G1-L, DS-2CD1321-I, DS-2CD2143G0-IS | `rtsp://user:pass@192.168.1.123:554/ISAPI/Streaming/Channels/102`
+Hikvision | IPC-HDW3849H-AS-PV, IPC-EW5531-AS | wired to nvr DHI-NVR2108HS-8P-I using [custom component](https://github.com/rroller/dahua)
+QNAP | QUSBCam2 | `rtsp://username:password@192.168.1.123:554/channel1` [docs](https://www.qnap.com/en/how-to/faq/article/what-is-the-qusbcam2-rtsp-url-format)
+Raspberry Pi | PiCam | [read more](https://github.com/AlexxIT/WebRTC/issues/261)
 Reolink | RLC-410, RLC-410W, RLC-510WA, E1 Pro, E1 Zoom, 4505MP | RLC-510WA support sound, E1 Zoom support sound, PTZ and zoom
+Reolink | E1 | `rtsp://admin:password@192.168.1.123:554/h264Preview_01_main`
 Sonoff | GK-200MP2-B | support sound and [PTZ](https://github.com/AlexxIT/SonoffLAN#sonoff-gk-200mp2-b-camera), `rtsp://rtsp:12345678@192.168.1.123:554/av_stream/ch0` and `/av_stream/ch1`
 SriHome | SH035 | `rtsp://192.168.xxx.xxx:8554/profile0` and `/profile1` and `/profile2`
 TP-Link | Tapo C100/C200/C310 | `rtsp://user:pass@192.168.1.123:554/stream1` and `/stream2`
-Wyze | Cam v2 | support sound
+Unifi | G4 Dome, G3 Bullet, G3 Flex |
+Wyze | Cam v2, Cam Pan v2 | support sound
 Xiaomi | Dafang | [with hack](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks), `rtsp://192.168.1.123:8554/unicast` <br> Video: H264, size: 1920x1080, bitrate: 1000, format: VBR, frame rate: 10 <br> Audio: PCMU, rate in: 8000, rate out: 44100
 Yi | Hi3518e Chipset | [with hack](https://github.com/alienatedsec/yi-hack-v5)
 Yi | MStar Infinity Chipset | [with hack](https://github.com/roleoroleo/yi-hack-MStar)
